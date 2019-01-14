@@ -16,8 +16,8 @@
   <Import Project="$(MSBuildThisFileDirectory)packages\$(FeedTasksPackage).$(FeedTasksPackageVersion)\build\$(FeedTasksPackage).targets" />
 
   <ItemGroup>
-    <!-- this should pick up both *.nupkg and *.symbols.nupkg -->
-    <NuGetPackages Include="$(MSBuildThisFileDirectory)\artifacts\packages\$(Configuration)\Microsoft.FSharp.Compiler.*.nupkg" />
+    <!-- the string '-rtm-' is important, because that's the package with a per-build unique version number -->
+    <NuGetPackages Include="$(MSBuildThisFileDirectory)artifacts\packages\$(Configuration)\Microsoft.FSharp.Compiler.*-rtm-*.nupkg" />
   </ItemGroup>
 
   <Target Name="Build">
