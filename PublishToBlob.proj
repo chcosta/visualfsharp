@@ -13,23 +13,18 @@
     <FeedTasksPackageVersion>2.2.0-beta.19066.1</FeedTasksPackageVersion>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <!-- the string '-rtm-' is important, because that's the package with a per-build unique version number -->
+    <PackagesToPublishPattern>$(MSBuildThisFileDirectory)artifacts\packages\$(Configuration)\Microsoft.FSharp.Compiler.*-rtm-*.nupkg</PackagesToPublishPattern>
+
+    <ManifestBranch>$(BUILD_SOURCEBRANCH)</ManifestBranch>
+    <ManifestCommit>$(BUILD_SOURCEVERSION)</ManifestCommit>
+    <ManifestBuildId>$(BUILD_BUILDNUMBER)</ManifestBuildId>
+    <AssetManifestFilePath>$(MSBuildThisFileDirectory)artifacts\log\$(Configuration)\AssetManifest\fsharp.xml</AssetManifestFilePath>
+  </PropertyGroup>
+
   <Import Project="$(MSBuildThisFileDirectory)packages\$(FeedTasksPackage).$(FeedTasksPackageVersion)\build\$(FeedTasksPackage).targets" />
 
-  <ItemGroup>
-    <!-- the string '-rtm-' is important, because that's the package with a per-build unique version number -->
-    <NuGetPackages Include="$(MSBuildThisFileDirectory)artifacts\packages\$(Configuration)\Microsoft.FSharp.Compiler.*-rtm-*.nupkg" />
-  </ItemGroup>
-
-  <Target Name="Build">
-    <PushToBlobFeed ExpectedFeedUrl="$(ExpectedFeedUrl)"
-                    AccountKey="$(AccountKey)"
-                    ItemsToPush="@(NuGetPackages)"
-                    Overwrite="$(PublishOverwrite)"
-                    ManifestBranch="$(ManifestBranch)"
-                    ManifestBuildId="$(ManifestBuildId)"
-                    ManifestCommit="$(ManifestCommit)"
-                    ManifestName="fsharp"
-                    SkipCreateManifest="false" />
-  </Target>
-
+  <Target Name="Build"
+          DependsOn="PublishPackagesToBlobFeed" />
 </Project>
