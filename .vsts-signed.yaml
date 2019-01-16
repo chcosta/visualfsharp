@@ -34,7 +34,7 @@ jobs:
     displayName: Publish packages to Azure Blob Storage
     inputs:
       solution: PublishToBlob.proj
-      msbuildArguments: '/t:Build /p:Configuration=$(MSBuildConfiguration) /p:ExpectedFeedUrl=$(PB_PublishBlobFeedUrl) /p:AccountKey=$(PB_PublishBlobFeedKey) /p:ManifestBranch=$(Build.SourceBranch) /p:ManifestCommit=$(Build.SourceVersion) /p:ManifestBuildId=$(Build.BuildNumber) /bl:$(Build.SourcesDirectory)/artifacts/log/$(MSBuildConfiguration)/pub/publish.binlog'
+      msbuildArguments: '/t:PublishPackagesToBlobFeed /p:Configuration=$(MSBuildConfiguration) /p:ExpectedFeedUrl=$(PB_PublishBlobFeedUrl) /p:AccountKey=$(PB_PublishBlobFeedKey) /p:ManifestBranch=$(Build.SourceBranch) /p:ManifestCommit=$(Build.SourceVersion) /p:ManifestBuildId=$(Build.BuildNumber) /bl:$(Build.SourcesDirectory)/artifacts/log/$(MSBuildConfiguration)/pub/publish.binlog'
     condition: and(succeeded(), contains(variables['PB_PublishType'], 'blob'))
   - task: PublishBuildArtifacts@1
     displayName: Publish publishing bin log

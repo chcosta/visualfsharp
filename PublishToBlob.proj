@@ -25,6 +25,4 @@
 
   <Import Project="$(MSBuildThisFileDirectory)packages\$(FeedTasksPackage).$(FeedTasksPackageVersion)\build\$(FeedTasksPackage).targets" />
 
-  <Target Name="Build"
-          DependsOn="PublishPackagesToBlobFeed" />
 </Project>
