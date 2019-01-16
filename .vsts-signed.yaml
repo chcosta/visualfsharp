@@ -47,7 +47,7 @@ jobs:
   - task: CopyFiles@2
     displayName: Gather Asset Manifests
     inputs:
-      SourceFolder: '$(Build.SourcesDirectory)/assets/orchestration-metadata/manifests'
+      SourceFolder: '$(Build.SourcesDirectory)/artifacts/log/Debug/AssetManifest'
       TargetFolder: '$(Build.StagingDirectory)/AssetManifests'
     continueOnError: true
     condition: and(succeeded(), contains(variables['PB_PublishType'], 'blob'))
