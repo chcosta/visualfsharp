@@ -43,7 +43,7 @@ jobs:
       ArtifactName: 'Publish_bin_log'
       publishLocation: Container
     continueOnError: true
-    condition: and(succeeded(), contains(variables['PB_PublishType'], 'blob'))
+    condition: and(always(), contains(variables['PB_PublishType'], 'blob'))
   - task: CopyFiles@2
     displayName: Gather Asset Manifests
     inputs:

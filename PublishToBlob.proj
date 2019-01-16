@@ -15,7 +15,7 @@
 
   <PropertyGroup>
     <!-- the string '-rtm-' is important, because that's the package with a per-build unique version number -->
-    <PackagesToPublishPattern>$(MSBuildThisFileDirectory)artifacts\packages\$(Configuration)\Microsoft.FSharp.Compiler.*-rtm-*.nupkg</PackagesToPublishPattern>
+    <PackagesToPublishPattern>$(MSBuildThisFileDirectory)artifacts\$(Configuration)\Microsoft.FSharp.Compiler.*-rtm-*.nupkg</PackagesToPublishPattern>
 
     <ManifestBranch>$(BUILD_SOURCEBRANCH)</ManifestBranch>
     <ManifestCommit>$(BUILD_SOURCEVERSION)</ManifestCommit>
