@@ -6,6 +6,8 @@ variables:
 - group: DotNet-Blob-Feed
 - name: PB_PublishBlobFeedKey
   value: $(dotnetfeed-storage-access-key-1)
+- name: PB_PublishType
+  value: blob
 
 jobs:
 - job: Full_Signed
