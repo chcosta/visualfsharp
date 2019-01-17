@@ -40,7 +40,15 @@ jobs:
     displayName: Publish publishing bin log
     inputs:
       PathtoPublish: '$(Build.SourcesDirectory)/artifacts/log/$(MSBuildConfiguration)/pub'
-      ArtifactName: 'Publish_bin_log'
+      ArtifactName: 'Publish'
+      publishLocation: Container
+    continueOnError: true
+    condition: and(always(), contains(variables['PB_PublishType'], 'blob'))
+  - task: PublishBuildArtifacts@1
+    displayName: Publish build bin log
+    inputs:
+      PathtoPublish: '$(Build.SourcesDirectory)/artifacts/log/$(MSBuildConfiguration)'
+      ArtifactName: 'Build'
       publishLocation: Container
     continueOnError: true
     condition: and(always(), contains(variables['PB_PublishType'], 'blob'))
