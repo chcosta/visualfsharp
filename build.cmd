@@ -715,25 +715,25 @@ if not "%SIGN_TYPE%" == "" (
     if ERRORLEVEL 1 echo Error running sign tool && goto :failure
 )
 
-if "%BUILD_SETUP%" == "1" (
-    echo %_msbuildexe% %msbuildflags% setup\build-insertion.proj /p:Configuration=%BUILD_CONFIG%  /bl:!logdir!\msbuild.build-insertion.build.%BUILD_CONFIG%.binlog
-         %_msbuildexe% %msbuildflags% setup\build-insertion.proj /p:Configuration=%BUILD_CONFIG%  /bl:!logdir!\msbuild.build-insertion.build.%BUILD_CONFIG%.binlog
-    if ERRORLEVEL 1 echo Error building insertion packages && goto :failure
-)
+REM if "%BUILD_SETUP%" == "1" (
+REM     echo %_msbuildexe% %msbuildflags% setup\build-insertion.proj /p:Configuration=%BUILD_CONFIG%  /bl:!logdir!\msbuild.build-insertion.build.%BUILD_CONFIG%.binlog
+REM          %_msbuildexe% %msbuildflags% setup\build-insertion.proj /p:Configuration=%BUILD_CONFIG%  /bl:!logdir!\msbuild.build-insertion.build.%BUILD_CONFIG%.binlog
+REM     if ERRORLEVEL 1 echo Error building insertion packages && goto :failure
+REM )
 
-if not "%SIGN_TYPE%" == "" (
-    echo %_msbuildexe% build\projects\Signing.proj /t:DoSigning /p:SignType=%SIGN_TYPE% /p:Configuration=%BUILD_CONFIG% /p:BinaryBasepath=%~dp0artifacts\VSSetup\%BUILD_CONFIG%\Insertion /p:ConfigFile=%~dp0build\config\InsertionSignToolData.json
-         %_msbuildexe% build\projects\Signing.proj /t:DoSigning /p:SignType=%SIGN_TYPE% /p:Configuration=%BUILD_CONFIG% /p:BinaryBasePath=%~dp0artifacts\VSSetup\%BUILD_CONFIG%\Insertion /p:ConfigFile=%~dp0build\config\InsertionSignToolData.json
-    if ERRORLEVEL 1 echo Error running sign tool && goto :failure
-)
+REM if not "%SIGN_TYPE%" == "" (
+REM     echo %_msbuildexe% build\projects\Signing.proj /t:DoSigning /p:SignType=%SIGN_TYPE% /p:Configuration=%BUILD_CONFIG% /p:BinaryBasepath=%~dp0artifacts\VSSetup\%BUILD_CONFIG%\Insertion /p:ConfigFile=%~dp0build\config\InsertionSignToolData.json
+REM          %_msbuildexe% build\projects\Signing.proj /t:DoSigning /p:SignType=%SIGN_TYPE% /p:Configuration=%BUILD_CONFIG% /p:BinaryBasePath=%~dp0artifacts\VSSetup\%BUILD_CONFIG%\Insertion /p:ConfigFile=%~dp0build\config\InsertionSignToolData.json
+REM     if ERRORLEVEL 1 echo Error running sign tool && goto :failure
+REM )
 
 echo ---------------- Done with signing, building insertion files ---------------
 
-if "%BUILD_SETUP%" == "1" (
-    echo %_msbuildexe% %msbuildflags% setup\Swix\Microsoft.FSharp.vsmanproj /p:Configuration=%BUILD_CONFIG% /bl:!logdir!\msbuild.setup-swix.build.%BUILD_CONFIG%.binlog
-         %_msbuildexe% %msbuildflags% setup\Swix\Microsoft.FSharp.vsmanproj /p:Configuration=%BUILD_CONFIG% /bl:!logdir!\msbuild.setup-swix.build.%BUILD_CONFIG%.binlog
-    if ERRORLEVEL 1 echo Error building .vsmanproj && goto :failure
-)
+REM if "%BUILD_SETUP%" == "1" (
+REM     echo %_msbuildexe% %msbuildflags% setup\Swix\Microsoft.FSharp.vsmanproj /p:Configuration=%BUILD_CONFIG% /bl:!logdir!\msbuild.setup-swix.build.%BUILD_CONFIG%.binlog
+REM          %_msbuildexe% %msbuildflags% setup\Swix\Microsoft.FSharp.vsmanproj /p:Configuration=%BUILD_CONFIG% /bl:!logdir!\msbuild.setup-swix.build.%BUILD_CONFIG%.binlog
+REM     if ERRORLEVEL 1 echo Error building .vsmanproj && goto :failure
+REM )
 
 echo ---------------- Done building insertion files, starting pack/update/prepare ---------------
 
