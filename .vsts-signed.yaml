@@ -17,6 +17,8 @@ jobs:
   variables:
     MSBuildConfiguration: 'Release'
   steps:
+  - checkout: self
+    clean: true
   # Run build.cmd
   - task: CmdLine@1
     displayName: Run build.cmd
