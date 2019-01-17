@@ -767,6 +767,7 @@ echo
 if "%TEST_NET40_COMPILERUNIT_SUITE%" == "0" if "%TEST_FCS%" == "0" if "%TEST_NET40_COREUNIT_SUITE%" == "0" if "TEST_CORECLR_FSHARP_SUITE" == "0" if "%TEST_CORECLR_COREUNIT_SUITE%" == "0" if "%TEST_VS_IDEUNIT_SUITE%" == "0" if "%TEST_NET40_FSHARP_SUITE%" == "0" if "%TEST_NET40_FSHARPQA_SUITE%" == "0" goto :success
 
 if "%no_test%" == "1" goto :success
+goto :success
 
 echo ---------------- Done with update, starting tests -----------------------
 
