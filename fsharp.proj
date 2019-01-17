@@ -106,7 +106,7 @@
     </ItemGroup>
 
     <ItemGroup Condition="'$(BuildSetup)' == 'true' OR '$(_RunningRestore)' == 'true'">
-      <Projects Include="$(MSBuildThisFileDirectory)setup\fsharp-setup-build.csproj" />
+<!-->      <Projects Include="$(MSBuildThisFileDirectory)setup\fsharp-setup-build.csproj" /> -->
     </ItemGroup>
 
     <!-- test binaries -->
