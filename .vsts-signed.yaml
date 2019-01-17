@@ -22,6 +22,7 @@ jobs:
     displayName: Run build.cmd
     inputs:
       filename: build.cmd
+      arguments: microbuild
 
   # Package publish
   - task: CmdLine@1
